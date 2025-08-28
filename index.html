@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডাকসু নির্বাচন ২০২৫ - আবিদ-হামিম-মায়েদ পরিষদ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #6B8A83; /* Muted Teal Green */
+            background-image: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2-H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+        }
+        .header-font {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 1px;
+        }
+        .manifesto-card, .candidate-card {
+            background-color: #FDF5E6; /* Off-white / Cream */
+            border: 2px solid #C0392B; /* Strong Red */
+            border-radius: 0.25rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-texture {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63-31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm81-68c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM62 62c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" fill="%23C0392B" fill-opacity="0.08" fill-rule="evenodd"/%3E%3C/svg%3E');
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .manifesto-header {
+            cursor: pointer;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .manifesto-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+            padding: 0 1.5rem;
+            color: #333;
+        }
+        .manifesto-content.open {
+            max-height: 2000px;
+            padding-bottom: 1.5rem;
+        }
+        .arrow {
+            transition: transform 0.3s ease-in-out;
+            color: #C0392B;
+        }
+        .arrow.rotated {
+            transform: rotate(180deg);
+        }
+        .icon-bg {
+            background-color: #C0392B;
+            color: #FDF5E6;
+        }
+        .focus-text {
+            font-weight: 600;
+            color: #C0392B;
+        }
+        .nav-button {
+            background-color: #FDF5E6;
+            color: #C0392B;
+            border: 2px solid #C0392B;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 1px;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            width: 100%;
+        }
+        .nav-button:hover {
+            background-color: #C0392B;
+            color: #FDF5E6;
+        }
+        .candidate-image-wrapper {
+            border: 4px solid #C0392B;
+            padding: 8px;
+            background-color: #FDF5E6;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-10">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-2 header-font" style="text-shadow: 3px 3px 0px #C0392B;">ডাকসু নির্বাচন ২০২৫</h1>
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 header-font">আবিদ-হামিম-মায়েদ পরিষদ</h2>
+        </header>
+
+        <!-- Page Content -->
+        <main id="page-content">
+            <!-- VP Candidate Page -->
+            <div id="candidate-page-vp" class="hidden">
+                <div class="candidate-card p-6 sm:p-8 text-center">
+                    <div class="card-texture"></div>
+                    <div class="flex justify-center mb-6">
+                        <div class="candidate-image-wrapper rounded-full">
+                            <img src="https://scontent.fdac24-5.fna.fbcdn.net/v/t39.30808-6/540664131_122100981902993366_3064081611830352382_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=rqWxlf17-qUQ7kNvwE6EqST&_nc_oc=AdkVRvsfWuWqwteunIqH3GWgutWV4G0IV0xB9MCy0TKqNADIkXIam9dXYvaOkvyGJgM&_nc_zt=23&_nc_ht=scontent.fdac24-5.fna&_nc_gid=4v2fAfaA0U-hAXQTzU0dSA&oh=00_AfU3zlNz-0KKxs-JIjU6M3sRUgdRnbjt3_UaWLnOp1bHuw&oe=68B5CD7F" alt="Md. Abidul Islam Khan" class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/192x192/FDF5E6/C0392B?text=Abidul';">
+                        </div>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl header-font text-gray-900">মো: আবিদুল ইসলাম খান</h3>
+                    <p class="text-xl sm:text-2xl text-red-700 font-semibold mt-2">সহ-সভাপতি (ভিপি) প্রার্থী</p>
+                    <div class="mt-6 inline-block bg-red-700 text-white py-3 px-6 rounded">
+                        <span class="text-lg sm:text-xl">ব্যালট নং</span>
+                        <span class="text-3xl sm:text-4xl font-bold header-font ml-2">২১</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GS Candidate Page -->
+            <div id="candidate-page-gs" class="hidden">
+                <div class="candidate-card p-6 sm:p-8 text-center">
+                    <div class="card-texture"></div>
+                    <div class="flex justify-center mb-6">
+                        <div class="candidate-image-wrapper rounded-full">
+                            <img src="https://tds-images-bn.thedailystar.net/sites/default/files/styles/very_big_1/public/images/2025/08/28/tanvir_bari_hamim_27aug25.jpg" alt="GS Candidate" class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl header-font text-gray-900">শেখ তানভীর বারী হামিম</h3>
+                    <p class="text-xl sm:text-2xl text-red-700 font-semibold mt-2">সাধারণ সম্পাদক (জিএস) প্রার্থী</p>
+                    <div class="mt-6 inline-block bg-red-700 text-white py-3 px-6 rounded">
+                        <span class="text-lg sm:text-xl">ব্যালট নং</span>
+                        <span class="text-3xl sm:text-4xl font-bold header-font ml-2">১৭</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AGS Candidate Page -->
+            <div id="candidate-page-ags" class="hidden">
+                <div class="candidate-card p-6 sm:p-8 text-center">
+                    <div class="card-texture"></div>
+                    <div class="flex justify-center mb-6">
+                        <div class="candidate-image-wrapper rounded-full">
+                             <img src="https://scontent.fdac24-4.fna.fbcdn.net/v/t1.6435-9/117105561_2727236910931514_6394087040820461184_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=WQwqusHxzp8Q7kNvwHLi_O_&_nc_oc=Adnw842BGIt9uzzvO1xG2k_t_YnFS-ZAU_m8dUlwKy-g3oBwDMw4TWYt_Lj8tpokJn4&_nc_zt=23&_nc_ht=scontent.fdac24-4.fna&_nc_gid=QB1fKtbAk4CRYcKalI-u6Q&oh=00_AfXyjMDoICJ5T9L7wmkm72B7VYVkHMYG36d0G6mcVq9ubg&oe=68D773B8" alt="AGS Candidate" class="rounded-full h-40 w-40 sm:h-48 sm:w-48 object-cover">
+                        </div>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl header-font text-gray-900">তানভীর আল হাদী মায়েদ</h3>
+                    <p class="text-xl sm:text-2xl text-red-700 font-semibold mt-2">সহ-সাধারণ সম্পাদক (এজিএস) প্রার্থী</p>
+                    <div class="mt-6 inline-block bg-red-700 text-white py-3 px-6 rounded">
+                        <span class="text-lg sm:text-xl">ব্যালট নং</span>
+                        <span class="text-3xl sm:text-4xl font-bold header-font ml-2">০৮</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manifesto Page (Initially Visible) -->
+            <div id="manifesto-page">
+                <p class="text-gray-200 font-semibold text-center mb-6 text-lg">"প্রতিশ্রুতি নয়, পরিবর্তনে প্রতিজ্ঞাবদ্ধ।"</p>
+                <div class="space-y-4">
+                    <!-- Point 1: Safe & Modern Campus -->
+                    <div class="manifesto-card">
+                        <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">১. শিক্ষা ও গবেষণাকে প্রাধান্য দিয়ে আধুনিক, আনন্দময়, বসবাসযোগ্য, ও নিরাপদ ক্যাম্পাস গড়ে তোলা</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li><strong class="focus-text">গেস্টরুম-গণরুম সংস্কৃতি</strong>, জোরপূর্বক রাজনৈতিক কর্মসূচি ও দমন-নিপীড়নের মতো ঘৃণিত চর্চা বন্ধ করে ক্যাম্পাসকে সন্ত্রাস, চাঁদাবাজি ও দখলদারিত্ব থেকে <strong class="focus-text">চিরকালের জন্য মুক্তকরণ</strong>।</li>
+                                <li><strong class="focus-text">ভয়মুক্ত পরিবেশে</strong> ও সম্প্রীতি নিশ্চিত করে সকল ধর্ম, বর্ণ, মত ও পথের শিক্ষার্থীর <strong class="focus-text">সহাবস্থান ও অধিকার চর্চার সুযোগ</strong> নিশ্চিতকরণ।</li>
+                                <li><strong class="focus-text">ক্লাসরুম সংকট নিরসনে</strong> সময়োপযোগী অবকাঠামোগত সম্প্রসারণ ও শ্রেণিকক্ষ বৃদ্ধির কার্যক্রম শুরু করা।</li>
+                                <li>শিক্ষার্থী নিপীড়ন, র‍্যাগিং, অনলাইন-অফলাইনে ঘৃণা ও মিসইনফরমেশন প্রতিরোধে ডাকসুর অধীনে একটি স্বাধীন <strong class="focus-text">'শিক্ষার্থী সুরক্ষা সেল'</strong> গঠন ও শিক্ষার্থীদের যেকোনো জরুরি প্রয়োজনে ২৪ ঘন্টা সেবা প্রাপ্তি নিশ্চিত করতে <strong class="focus-text">'ইমার্জেন্সি হেল্পলাইন'</strong> চালু।</li>
+                                <li>ক্যাম্পাসে মাদকসেবী ও ভবঘুরেসহ <strong class="focus-text">বহিরাগতদের অনধিকার প্রবেশ রোধ</strong>, পুরো ক্যাম্পাসে <strong class="focus-text">সিসিটিভি ক্যামেরা স্থাপন</strong>, ও রাতের আলো জ্বালানো নিশ্চিত করা। হলে কোনো প্রকার <strong class="focus-text">অছাত্র অবস্থান সম্পূর্ণ নিষিদ্ধকরণ</strong>।</li>
+                                <li>ঢাকা বিশ্ববিদ্যালয়কে একটি <strong class="focus-text">পূর্নাঙ্গ আবাসিক বিশ্ববিদ্যালয়</strong> হিসেবে গড়ে তোলার জন্য নতুন হল নির্মাণের দ্রুত ব্যবস্থা গ্রহণ, যেন ভর্তির দিন থেকেই প্রত্যেক শিক্ষার্থীর জন্য <strong class="focus-text">'একটি সিট ও একটি পড়ার টেবিল'</strong> নিশ্চিত করা সম্ভব হয়।</li>
+                                <li>আবাসিক হলগুলোকে <strong class="focus-text">মশা ও ছারপোকামুক্ত</strong> রাখতে কার্যকর পদক্ষেপ গ্রহণ।</li>
+                                <li>ক্যান্টিন ও ক্যাফেটেরিয়ার খাবারের ওপর <strong class="focus-text">ভর্তুকি বৃদ্ধি</strong>, পুষ্টিবিদদের সমন্বয়ে টীম গঠন করে খাবারের <strong class="focus-text">স্বাস্থ্যগুন ও পুষ্টিমান নিশ্চিত করা</strong>, এবং সামগ্রিক পরিবেশ ও ব্যবস্থাপনার গুণগত উন্নতি।</li>
+                                <li>বিভিন্ন অনুষদ ও বিভাগীয় এলাকা বিবেচনায় নিয়ে <strong class="focus-text">নতুন ক্যান্টিন ও ক্যাফেটেরিয়া স্থাপন</strong>, যেন সব শিক্ষার্থী সহজেই সাশ্রয়ী ও স্বাস্থ্যকর খাবার পেতে পারে।</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Point 2: Female Students' Empowerment -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">২. নারী শিক্ষার্থীদের জন্যে নিরাপদ ক্যাম্পাস, নারী স্বাস্থ্য সুরক্ষা এবং সক্ষমতা বৃদ্ধি</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>নারী শিক্ষার্থীদের <strong class="focus-text">পোশাকের স্বাধীনতা, যৌন হয়রানি প্রতিরোধ</strong>, এবং সর্বোচ্চ সামাজিক মর্যাদা নিশ্চিত করা।</li>
+                                <li>প্রতিটি আবাসিক হলে বিশ্ববিদ্যালয়ের ভর্তুকিতে <strong class="focus-text">স্যানিটারি প্যাড ভেন্ডিং মেশিন স্থাপন</strong>, এবং হলের সকল পরিচ্ছন্নতাকর্মী যেন নারী হয়, তা নিশ্চিতকরণ।</li>
+                                <li>বিশ্ববিদ্যালয়ের মেডিকেল সেন্টারে <strong class="focus-text">সার্বক্ষণিক নারী চিকিৎসকের উপস্থিতি</strong> নিশ্চিত করা এবং প্রতিটি নারী হলে <strong class="focus-text">স্বাস্থ্যসেবা ইউনিট চালু</strong> করা।</li>
+                                <li>ক্যাম্পাসের নিরাপত্তা ব্যবস্থা জোরদারের পাশাপাশি নারী শিক্ষার্থীদের আবাসিক হলগুলোতে <strong class="focus-text">সান্ধ্য আইন বিলোপের</strong> মাধ্যমে রাতে প্রবেশের সময়সীমা বৃদ্ধি, এবং এক হলের নারী শিক্ষার্থীদের অন্য নারী শিক্ষার্থী হলগুলোতে প্রবেশ ও সাক্ষাতের ক্ষেত্রে বিদ্যমান বাধা দূর করা।</li>
+                                <li>জরুরী প্রয়োজনে হল থেকে প্রস্থানের জন্যে <strong class="focus-text">লোকাল গার্ডিয়ানের অনুমতির জটিলতা দূর</strong> করে, নারী শিক্ষার্থীদের জরুরী প্রয়োজনীয়তা বিবেচনায় হল প্রভোস্টের অনুমতি সাপেক্ষে রাতে হল থেকে প্রস্থানের নিয়মের সহজীকরণ।</li>
+                                <li><strong class="focus-text">অনাবাসিক নারী শিক্ষার্থীরা</strong> যেন হল প্রশাসনের অনুমতি সাপেক্ষে আবাসিক হলগুলোতে যৌক্তিক সময়কালে <strong class="focus-text">রাত্রীযাপন করতে পারে</strong>, তার জন্য প্রয়োজনীয় পদক্ষেপ গ্রহণ।</li>
+                                <li><strong class="focus-text">বেকার নারী গ্র্যাজুয়েটদের জন্য</strong> ছয় মাস মেয়াদে স্বল্প খরচে আবাসন ও খাবারের ব্যবস্থা করতে ক্যাম্পাস সংলগ্ন এলাকায় <strong class="focus-text">হোস্টেল নির্মাণের</strong> জন্য কার্যকর পদক্ষেপ গ্রহণ।</li>
+                                <li>নারী শিক্ষার্থীদের ব্যবসায়িক আইডিয়া বাস্তবায়নে সহায়তা করতে <strong class="focus-text">'নারী উদ্ভাবন ও উদ্যোক্তা তহবিল' গঠন</strong> এবং মেন্টরশিপ, প্রশিক্ষণ ও স্টার্টআপ ইনকিউবেশন প্রোগ্রাম চালু।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 3: Healthcare & Accessibility -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m-4-4h8" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৩. শিক্ষার্থীদের জন্যে মানসম্মত স্বাস্থ্যসেবা, স্বাস্থ্য বীমা এবং বিশেষ চাহিদাসম্পন্ন ছাত্র-ছাত্রীদের জন্য সুবিধা</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>বিশ্ববিদ্যালয় মেডিকেল সেন্টারে <strong class="focus-text">সার্বক্ষণিক ডাক্তার, অ্যাম্বুলেন্স, ফার্মেসি সেবা</strong> নিশ্চিত করা এবং <strong class="focus-text">জরুরী ঔষধসমূহ বিনামূল্যে</strong> প্রদানের ব্যবস্থা করা।</li>
+                                <li>সকল আবাসিক হলে <strong class="focus-text">24/7 এম্বুলেন্স জরুরী ঔষধ ও ফার্স্ট এইড বক্সসহ মেডিকেল কর্নার</strong> স্থাপন করা।</li>
+                                <li>প্রতিটি শিক্ষার্থীকে সহজে বাস্তবায়নযোগ্য <strong class="focus-text">স্বাস্থ্য বীমা সেবার</strong> আওতায় নিয়ে আসা এবং বীমার টাকা দাবি ও প্রাপ্তির প্রক্রিয়াকে স্বচ্ছ করা।</li>
+                                <li>শিক্ষার্থীদের মানসিক সুস্থতা নিশ্চিত করতে টিএসসিতে একটি <strong class="focus-text">'মেন্টাল ওয়েলবিয়িং সেন্টার'</strong> গড়ে তোলা।</li>
+                                <li>বিশেষ চাহিদাসম্পন্ন শিক্ষার্থীদের চলাচলের সুবিধার জন্য বিদ্যমান ভবনসমূহে <strong class="focus-text">র‍্যাম্প স্থাপন</strong> করা। বিশেষ চাহিদাসম্পন্ন শিক্ষার্থীদের পরীক্ষা ও অন্যান্য একাডেমিক কার্যক্রমে <strong class="focus-text">ব্রেইল এবং অন্যান্য সহায়ক ব্যবস্থা</strong> নিশ্চিত করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 4: Curriculum & Research -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৪. কারিকুলাম, অবকাঠামো ও পরীক্ষা ব্যবস্থার আধুনিকায়ন, এবং গবেষণার মানোন্নয়ন</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>ঢাকা বিশ্ববিদ্যালয়ের <strong class="focus-text">কোর্স কারিকুলাম আধুনিক বিশ্বের সাথে তাল মিলিয়ে</strong> চলছে কিনা, সেটি <strong class="focus-text">নিয়মিত পর্যালোচনার জন্য কমিটি গঠন</strong>, যে কমিটির অন্যতম লক্ষ্য হবে বিশ্বের বিভিন্ন বিশ্ববিদ্যালয়ে <strong class="focus-text">ক্রেডিট ট্রান্সফারের সুযোগ</strong> সৃষ্টি ও বিশ্ববিদ্যালয়ের ইন্টারন্যাশনাল অফিসকে গতিশীল করা।</li>
+                                <li><strong class="focus-text">কেন্দ্রীয় লাইব্রেরীকে একটি বিশ্বমানের লাইব্রেরীতে রূপান্তর</strong>, লাইব্রেরী সিস্টেমকে <strong class="focus-text">ডিজিটালাইজেশনের</strong> আওতায় আনা, এবং আবাসিক হলসমূহের <strong class="focus-text">রিডিং রুম ও বিভাগীয় লাইব্রেরীসমূহের পরিবেশ ও সরঞ্জাম উন্নয়ন</strong>।</li>
+                                <li>শিক্ষার্থীদের জন্য <strong class="focus-text">বাস্তবধর্মী কার্যক্রমে সম্পৃক্ত</strong> হওয়ার সুযোগ সৃষ্টির মাধ্যমে শিখন-শিক্ষণ প্রক্রিয়ার মানোন্নয়ন, এবং শিক্ষার্থীদের সরকারি-বেসরকারি প্রতিষ্ঠানের সাথে সম্পৃক্ত করে <strong class="focus-text">ইন্টার্নশিপের ব্যবস্থা</strong> করা।</li>
+                                <li><strong class="focus-text">ফ্রিল্যান্সিং, তথ্যপ্রযুক্তি, সফট স্কিলস ও বিদেশী ভাষা শিক্ষা</strong> বিষয়ক বাস্তবমুখী <strong class="focus-text">ঐচ্ছিক কোর্স চালুর</strong> মাধ্যমে শিক্ষার্থীদের চাকরি ও পেশাগত জীবনের উপযোগী করে তোলা।</li>
+                                <li><strong class="focus-text">ইন্ডাস্ট্রি-একাডেমিয়া লিংকেজ তৈরি</strong> ও ঢাকা বিশ্ববিদ্যালয়ের অবস্থান <strong class="focus-text">বৈশ্বিক র‍্যাঙ্কিং-এ উন্নীত</strong> করার লক্ষ্যে প্রয়োজনীয় পদক্ষেপ গ্রহণ।</li>
+                                <li>শিক্ষক বা প্রশাসনিক ব্যক্তির <strong class="focus-text">পক্ষপাতমূলক আচরনের বিরুদ্ধে ব্যবস্থা</strong> গ্রহণের কার্যকর প্রক্রিয়া, এবং <strong class="focus-text">স্বজনপ্রীতির মাধ্যমে শিক্ষক নিয়োগের সংস্কৃতি বন্ধ</strong> করে যোগ্যতা ও মেধার ভিত্তিতে শিক্ষক নিয়োগ এবং নিয়মিত পারফরমেন্স মূল্যায়ন।</li>
+                                <li>একাডেমিক ক্যালেন্ডার অনুযায়ী পরীক্ষা, রেজাল্ট ও ক্লাস কার্যক্রম নিশ্চিত করার পাশাপাশি <strong class="focus-text">অনলাইন লার্নিং প্ল্যাটফর্ম চালু</strong> করে শিক্ষার্থীদের জন্য বিভিন্ন কোর্স, ওয়ার্কশপ ও রেকর্ডেড লেকচার সহজলভ্য করা।</li>
+                                <li>গবেষণার মানোন্নয়নে <strong class="focus-text">গবেষণাগার আধুনিকায়ন</strong>, সক্ষমতা বৃদ্ধির উদ্যোগ, পাবলিক-প্রাইভেট পার্টনারশিপ তৈরি, বিদেশে অবস্থানরত এলামনাইদের সম্পৃক্তকরণ, এবং <strong class="focus-text">গবেষণা খাতে বরাদ্দ বৃদ্ধি</strong>।</li>
+                                <li><strong class="focus-text">এমফিল ও পিএইচডি গবেষকদের জন্য আলাদা আবাসনের ব্যবস্থা</strong> ও <strong class="focus-text">অধিক হারে মাসিক ভাতা</strong> প্রদানের উদ্যোগ, যেন গবেষণাকে উৎসাহিত করা যায় এবং প্রশিক্ষণ ও প্রকাশনা সহায়তার সুযোগ হয়।</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Point 5: Transportation -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৫. পরিবহন ব্যবস্থার নিয়ন্ত্রণ, ব্যাটারিচালিত শাটল সার্ভিস প্রচলন, এবং যাতায়াত ব্যাবস্থা সহজ করা</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>বিশ্ববিদ্যালয়ের ভেতরে <strong class="focus-text">পরিবেশবান্ধব ও ব্যাটারিচালিত পর্যাপ্ত পরিমান শাটল সার্ভিস</strong> চালু করা।</li>
+                                <li>সকল রুটে আপ ট্রিপ দুপুর ১২টা পর্যন্ত ও ডাউনট্রিপ ৭টা পর্যন্ত বৃদ্ধি করে, <strong class="focus-text">শিক্ষার্থী বাস এবং বাস রুটের সংখ্যা ও পরিসর যৌক্তিকভাবে বৃদ্ধি</strong> করা।</li>
+                                <li>বিশ্ববিদ্যালয় এরিয়াকে <strong class="focus-text">গ্রিন, ইয়েলো এবং রেড জোনে ভাগ</strong> করে যানবাহন ও বহিরাগত নিয়ন্ত্রণ।</li>
+                                <li>কল্যাণপুর ডিপোর উপর নির্ভরশীলতা কমিয়ে একাধিক ডিপো হতে যানবাহন সরবরাহ করে <strong class="focus-text">চালক এবং যানবাহন সংকট দূরীকরণ</strong>।</li>
+                                <li>প্রতিটি বাসে বাধ্যতামূলকভাবে <strong class="focus-text">জিপিএস ট্র্যাকার স্থাপন করে একটি মোবাইল অ্যাপস</strong> চালু করা, যার মাধ্যমে শিক্ষার্থীরা বাসের লাইভ লোকেশন ও সময়সূচি জানতে পারবে।</li>
+                                <li>বিশ্ববিদ্যালয়ের অভ্যন্তরীণ রুটে যান চলাচল ঝুঁকিমুক্ত করার জন্যে সকল যানবাহনের <strong class="focus-text">ফিটনেস নিয়মিতভাবে চেকিং</strong> করা।</li>
+                                <li>ক্যাম্পাসে যানজট কমাতে <strong class="focus-text">সাইকেল ও পরিবেশবান্ধব যাতায়াতকে অগ্রাধিকার</strong> দেওয়া, নিরাপদ হাঁটার জন্য <strong class="focus-text">ফুটপাত ও অভ্যন্তরীণ রাস্তাগুলো সংস্কার</strong> করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 6: Admin, Loans, Jobs -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৬. হয়রানি মুক্ত প্রশাসনিক সেবা, শিক্ষা ঋণ, এবং ক্যাম্পাসভিত্তিক কর্মসংস্থানের ব্যবস্থা</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>রেজিস্ট্রার ভবনে <strong class="focus-text">'লাঞ্চের পরে আসেন' কালচার দূর</strong> করে ভবনের সার্বিক কার্যক্রম <strong class="focus-text">হয়রানিমুক্ত, আধুনিক এবং গতিশীল</strong> করার লক্ষ্যে যাবতীয় প্রশাসনিক কার্যক্রমকে ধাপে-ধাপে <strong class="focus-text">ডিজিটালাইজড করা</strong> এবং <strong class="focus-text">ডিজিটাল সাপোর্ট ডেস্ক</strong> তৈরী করা।</li>
+                                <li>সরকারি-বেসরকারী উদ্যোগে, কর্পোরেট প্রতিষ্ঠান ও এলামনাই এসোসিয়েশনের মাধ্যমে শিক্ষার্থীদের জন্য <strong class="focus-text">মেধাভিত্তিক বৃত্তি ও সহজলভ্য শিক্ষা ঋণ</strong> ব্যাবস্থা চালু করা।</li>
+                                <li>বিশ্ববিদ্যালয়ের অভ্যন্তরে অধিক হারে <strong class="focus-text">পার্ট-টাইম চাকরির সুযোগ সৃষ্টি</strong> করা, বিশেষত ক্যাফেটেরিয়া, রেজিস্ট্রার বিল্ডিং, লাইব্রেরি, ইত্যাদিতে শিক্ষার্থীদের <strong class="focus-text">ঘন্টা ভিত্তিক অন-ক্যাম্পাস কাজের সুযোগ</strong> সৃষ্টি করা।</li>
+                                <li>ক্যারিয়ার ডেভেলপমেন্ট সেন্টারকে শক্তিশালীকরণের মাধ্যমে <strong class="focus-text">ইন্টার্নশিপ ও জব ফেয়ার আয়োজন</strong> করা, <strong class="focus-text">অন-সাইট রিক্রুটমেন্ট</strong> শুরু করা, এবং <strong class="focus-text">প্রাইভেট-পাব্লিক জব প্লেসমেন্ট নেটওয়ার্ক</strong> তৈরি করা।</li>
+                                <li>দেশবরেণ্য পেশাজীবি ও উদ্যোক্তাদেরকে আমন্ত্রণ করে নিয়মিত <strong class="focus-text">ক্যারিয়ার ডেভেলপমেন্ট শীর্ষক সেমিনার ও সিম্পোজিয়াম</strong> এবং <strong class="focus-text">ট্রেনিং ও মোটিভেশনাল সেশন</strong> আয়োজন করা।</li>
+                                <li>বিশ্ববিদ্যালয়ের বিভিন্ন দোকান ও প্রতিষ্ঠানে <strong class="focus-text">শিক্ষার্থীদের ব্যবসায়িক উদ্যোগকে অগ্রাধিকার</strong> দেয়া। শিক্ষার্থীদের মধ্য থেকে নতুন-নতুন উদ্যোক্তা সৃষ্টিতে <strong class="focus-text">স্টার্টআপ ক্যাপিটাল ও মেন্টরশিপ সহায়তা</strong> প্রদানের ব্যবস্থা করা, এবং <strong class="focus-text">শেয়ার্ড ওয়ার্ক স্পেসের</strong> ব্যবস্থা করে দেওয়া।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 7: Youth, Sports, Culture -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৭. তরুণদের গঠনমূলক কাজে সম্পৃক্তকরণ এবং ক্রীড়া ও সাংস্কৃতিক কার্যক্রম বৃদ্ধি</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>বৈচিত্র্যময় এবং অন্তর্ভুক্তিমূলক শিক্ষাঙ্গন গড়তে <strong class="focus-text">নৃগোষ্ঠীর ভাষা-সংস্কৃতি চর্চা উৎসাহিত</strong> করা।</li>
+                                <li>খেলাধুলায় উন্নতির জন্য <strong class="focus-text">বার্ষিক আন্তঃবিভাগ ও আন্তঃহল ক্রীড়া প্রতিযোগিতা</strong>, আন্তঃবিশ্ববিদ্যালয় টুর্নামেন্ট চালু করা, <strong class="focus-text">কেন্দ্রীয় জিমনেসিয়ামের আধুনিকায়ন</strong>, খেলার মাঠ ও ইনডোর সুবিধার সংস্কার এবং <strong class="focus-text">জাতীয় ও আন্তর্জাতিক প্রতিযোগিতায় অংশগ্রহণে সহায়তা</strong> প্রদান।</li>
+                                <li>ক্যাম্পাস ও সোহরাওয়ার্দী উদ্যানে <strong class="focus-text">মাদক চক্র দমন</strong>, <strong class="focus-text">সুস্থ বিনোদন ও মানসিক স্বাস্থ্য সহায়ক</strong> গান-বাজনা, বিতর্ক, কমেডি, এবং নানাবিধ <strong class="focus-text">সাংস্কৃতিক অনুষ্ঠানের আয়োজন</strong>।</li>
+                                <li>নাটক, শর্টফিল্ম, ফটোগ্রাফি, চিত্রাঙ্কন, আবৃত্তি, সৃজনশীল লেখা ও চলচ্চিত্র নির্মাণসহ শিল্প-সাহিত্যের বিভিন্ন মাধ্যমে শিক্ষার্থীদের <strong class="focus-text">সক্রিয় অংশগ্রহণে উৎসাহ ও সহায়তা</strong> প্রদান।</li>
+                                <li>কেন্দ্রীয়, হল ও বিভাগভিত্তিক প্রতিটি সামাজিক, সাংস্কৃতিক, স্বেচ্ছাসেবী ও ক্রীড়া সংগঠনের <strong class="focus-text">বার্ষিক বাজেট বরাদ্দ যৌক্তিক হারে বৃদ্ধি</strong> করা।</li>
+                                <li>প্রতিবছর <strong class="focus-text">'ঢাকা বিশ্ববিদ্যালয় তারুণ্যের উৎসব'</strong> আয়োজনের মাধ্যমে শিক্ষার্থীদের অংশগ্রহণমূলক সাংস্কৃতিক ও সৃজনশীল কর্মকাণ্ডের প্ল্যাটফর্ম তৈরি করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 8: Digital & Cybersecurity -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৮. শিক্ষার্থীদের জন্য ডিজিটাল সুবিধা, সাইবার সিকিউরিটি, এবং সাইবার বুলিং প্রতিরোধ</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>বিশ্ববিদ্যালয় প্রদত্ত একাডেমিক ইমেইল আইডির <strong class="focus-text">স্টোরেজ লিমিট বৃদ্ধি</strong>, একাউন্টের মেয়াদ বৃদ্ধি এবং তা ব্যবহার করে <strong class="focus-text">বিশ্বমানের অনলাইন জার্নাল ও লাইব্রেরি একসেস</strong> নিশ্চিত করা এবং সকল ছাত্র-ছাত্রীকে <strong class="focus-text">বিনামূল্যে ক্লাউড স্টোরেজ প্রদান</strong>।</li>
+                                <li><strong class="focus-text">প্রয়োজনীয় ডিজিটাল স্কিলসমূহে</strong> শিক্ষার্থীদের দক্ষতা অর্জনের জন্য <strong class="focus-text">প্রশিক্ষণ ও লার্নিং সেশন</strong> পরিচালনা করা। প্রশিক্ষণ শেষে শিক্ষার্থীদের বিভিন্ন টুলস যেমন <strong class="focus-text">ক্যানভা, এডোবি ইত্যাদি সফটওয়্যারের সাবস্ক্রিপশন প্রদান</strong> করা।</li>
+                                <li><strong class="focus-text">আর্টিফিসিয়াল ইন্টিলিজেন্স, রোবোটিক্স, বিগ ডাটা, মেশিন লার্নিং</strong>, ইত্যাদি বিষয়ে প্রশিক্ষণ ও কর্মশালা আয়োজন।</li>
+                                <li>শিক্ষার্থীদের জন্য সাইবার সিকিউরিটি নিশ্চিত করতে ও সাইবার বুলিং প্রতিরোধে একটি <strong class="focus-text">'সাইবার সিকিউরিটি সেল'</strong> গঠন করা।</li>
+                                <li>ডিজিটাল নিরাপত্তা নিশ্চিত করতে শিক্ষার্থীদের জন্য <strong class="focus-text">ডিজিটাল লিটারেসী, মিসইনফরমেশন, ডিসইনফরমেশন, ফেইক নিউজ</strong> ইত্যাদি বিষয়ে <strong class="focus-text">সচেতনতামূলক কর্মশালা</strong> আয়োজন করা।</li>
+                                <li>শিক্ষার্থীদের আইনি সহায়তা প্রদানের জন্য আইনজীবীদের একটি প্যানেল তৈরি করা এবং এর মাধ্যমে <strong class="focus-text">লিগ্যাল এইড সাপোর্ট ও কাউন্সিলিং সার্ভিস</strong> চালু করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 9: Environment & Animal-Friendly -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">৯. বর্জ্য ব্যবস্থাপনা, পরিবেশ সংরক্ষণ, সবুজায়ন ও প্রাণীবান্ধব ক্যাম্পাস তৈরি</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>প্রতিটি হল, ক্যাফেটেরিয়া, একাডেমিক ভবন ও ক্যাম্পাসের গুরুত্বপূর্ণ স্থানসমূহে <strong class="focus-text">পর্যাপ্ত ডাস্টবিন স্থাপন ও বর্জ্য ব্যবস্থাপনা প্রক্রিয়াকে কার্যকর</strong> করার মাধ্যমে সর্বদা <strong class="focus-text">পরিস্কার-পরিচ্ছন্ন</strong> রাখা।</li>
+                                <li>ঢাকা বিশ্ববিদ্যালয়ের <strong class="focus-text">প্রাণ-প্রকৃতি, উদ্যান, গাছপালা ও সবুজ আবহ সংরক্ষণ ও বৃদ্ধি</strong> করা। শিক্ষার্থীদের সাথে নিয়ে <strong class="focus-text">বৃক্ষরোপণ ও সবুজায়ন কর্মসূচি</strong> আয়োজন করা।</li>
+                                <li>বিশ্ববিদ্যালয়ে নতুনভাবে নির্মিত প্রতিটি অবকাঠামো যেন <strong class="focus-text">পরিবেশবান্ধব</strong> হয়, সেটি নিশ্চিত করতে প্রশাসনকে দায়বদ্ধ করা।</li>
+                                <li>ঢাকা বিশ্ববিদ্যালয়কে একটি <strong class="focus-text">প্রাণীবান্ধব ক্যাম্পাসে রুপান্তরিত</strong> করতে আবাসিক হল ও ক্যাম্পাসের বিভিন্ন স্থানে বসবাসরত প্রাণীদের জন্য <strong class="focus-text">খাবার ও চিকিৎসার ব্যবস্থা</strong> করা, <strong class="focus-text">প্রাণীর বিরুদ্ধে নির্যাতন প্রতিরোধ</strong> ও তাদের দায়িত্বশীল ব্যবস্থাপনা নিশ্চিত করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Point 10: Effective DUCSU & International -->
+                    <div class="manifesto-card">
+                         <div class="card-texture"></div>
+                        <div class="manifesto-header" onclick="toggle(this)">
+                            <div class="flex items-center space-x-4">
+                                <div class="icon-bg p-3 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9h18" />
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-900">১০. কার্যকর ডাকসু এবং আন্তর্জাতিক পরিসরে ঢাকা বিশ্ববিদ্যালয়ের সম্পৃক্ততা বৃদ্ধিকরণ</h3>
+                            </div>
+                            <svg class="arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </div>
+                        <div class="manifesto-content">
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>একাডেমিক ক্যালেন্ডারে <strong class="focus-text">নিয়মিত ডাকসু নির্বাচন অন্তর্ভুক্ত</strong> করা।</li>
+                                <li>ডাকসুকে শিক্ষার্থীদের <strong class="focus-text">প্রকৃত প্রতিনিধিত্বশীল ও কার্যকর প্রতিষ্ঠান</strong> হিসেবে প্রতিষ্ঠা করা।</li>
+                                <li>ঢাকা বিশ্ববিদ্যালয়ের সাথে <strong class="focus-text">বিশ্বের শীর্ষস্থানীয় বিশ্ববিদ্যালয় ও গবেষণা প্রতিষ্ঠানসমূহের সাথে যোগাযোগ</strong> ও সহযোগিতা জোরদার করা।</li>
+                                <li>শিক্ষার্থীদের জন্য <strong class="focus-text">আন্তর্জাতিক অলিম্পিয়াড, সিম্পোজিয়াম, কনফারেন্স, সেমিনার ও একাডেমিক এক্সচেঞ্জ প্রোগ্রামে অংশগ্রহণের সুযোগ বৃদ্ধি</strong> এবং প্রয়োজন অনুসারে আন্তর্জাতিক প্রতিযোগিতায় অংশগ্রহনের জন্যে <strong class="focus-text">বিশ্ববিদ্যালয় হতে ফান্ড প্রদান</strong> করা।</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation & Footer -->
+        <footer class="text-center mt-12 py-6">
+            <div class="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-4 mb-8">
+                <button id="show-manifesto" class="nav-button">নির্বাচনী ইশতিহার</button>
+                <button id="show-candidate-vp" class="nav-button">ভিপি প্রার্থী</button>
+                <button id="show-candidate-gs" class="nav-button">জিএস প্রার্থী</button>
+                <button id="show-candidate-ags" class="nav-button">এজিএস প্রার্থী</button>
+            </div>
+            <div class="border-t-2 border-red-800 pt-6">
+                 <p class="text-gray-200">আমাদের এই নির্বাচনী ইশতেহার সম্মিলিতভাবে এমন একটি ক্যাম্পাস গড়ে তোলার প্রত্যয়, যেখানে সকলের শিক্ষা, স্বাস্থ্য, নিরাপত্তা, মর্যাদা, গবেষণা, ক্যারিয়ার উন্নয়ন, সাংস্কৃতিক বিকাশ এবং গণতান্ত্রিক অধিকার প্রতিষ্ঠার পূর্ণ নিশ্চয়তা থাকবে।</p>
+                 <p class="text-white font-semibold mt-2 text-lg header-font">আপনার ভোট, আপনার অধিকার। আসুন, আমরা সবাই সেই অধিকার প্রয়োগ করে অর্থবহ ও টেকসই পরিবর্তন নিশ্চিত করি।</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        const manifestoPage = document.getElementById('manifesto-page');
+        const candidateVpPage = document.getElementById('candidate-page-vp');
+        const candidateGsPage = document.getElementById('candidate-page-gs');
+        const candidateAgsPage = document.getElementById('candidate-page-ags');
+        
+        const showManifestoBtn = document.getElementById('show-manifesto');
+        const showCandidateVpBtn = document.getElementById('show-candidate-vp');
+        const showCandidateGsBtn = document.getElementById('show-candidate-gs');
+        const showCandidateAgsBtn = document.getElementById('show-candidate-ags');
+
+        const allPages = [manifestoPage, candidateVpPage, candidateGsPage, candidateAgsPage];
+
+        function showPage(pageToShow) {
+            allPages.forEach(page => {
+                if (page === pageToShow) {
+                    page.classList.remove('hidden');
+                } else {
+                    page.classList.add('hidden');
+                }
+            });
+            window.scrollTo(0, 0);
+        }
+
+        showManifestoBtn.addEventListener('click', () => showPage(manifestoPage));
+        showCandidateVpBtn.addEventListener('click', () => showPage(candidateVpPage));
+        showCandidateGsBtn.addEventListener('click', () => showPage(candidateGsPage));
+        showCandidateAgsBtn.addEventListener('click', () => showPage(candidateAgsPage));
+
+        function toggle(headerElement) {
+            const content = headerElement.nextElementSibling;
+            const arrow = headerElement.querySelector('.arrow');
+            
+            const wasOpen = content.classList.contains('open');
+
+            document.querySelectorAll('.manifesto-content.open').forEach(openContent => {
+                openContent.classList.remove('open');
+                openContent.previousElementSibling.querySelector('.arrow').classList.remove('rotated');
+            });
+
+            if (!wasOpen) {
+                content.classList.add('open');
+                arrow.classList.add('rotated');
+            }
+        }
+        
+        // Default to manifesto page
+        showPage(manifestoPage);
+    </script>
+
+</body>
+</html>
